@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.response.use(
   (response) => {
     const result = response.data;
-
+console.log(result);
     if (result.status === 0) {
       return result.data || {}
     } else {
