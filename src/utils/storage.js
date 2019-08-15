@@ -1,5 +1,5 @@
 const USER_KEY = 'user';
-
+// 存储localStorage信息
 function getItem() {
   return JSON.parse(localStorage.getItem(USER_KEY));
 };

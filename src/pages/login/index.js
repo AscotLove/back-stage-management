@@ -8,7 +8,7 @@ import './index.less'
 const { Item } = Form;
 
 class Login extends Component {
-
+// From发送Ajax请求
   handleSubmit = e => {
     e.preventDefault();
     const { form: { validateFields, resetFields }, history: { replace }} = this.props;
@@ -29,7 +29,7 @@ class Login extends Component {
       }
     });
   };
-
+// 表单验证
   validator = (rule, value, callback) => {
     const name = rule.field === 'username' ? '用户名' : '密码';
     const passwordReg = /^\w+$/;
@@ -65,7 +65,7 @@ class Login extends Component {
             })(
               <Input
                 prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                placeholder="Username"
+                placeholder="用户名"
               />,
             )}
           </Item>
@@ -80,7 +80,7 @@ class Login extends Component {
               <Input
                 prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
                 type="password"
-                placeholder="Password"
+                placeholder="密码"
               />,
             )}
           </Item>
