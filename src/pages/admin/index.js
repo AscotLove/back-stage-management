@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { message, Spin, Layout } from 'antd';
 import { Link } from 'react-router-dom';
 
-// import LeftNav from '../../components/left-nav';
+import LeftNav from '../../components/left-nav';
 import logo from "../../assets/images/logo.png";
 import { reqValidateUser } from '../../api';
 import data from '../../utils/store';
@@ -60,7 +60,7 @@ export default class Admin extends Component {
           <img src={logo} alt="logo"/>
           <h1 style={{display: isDisplay}}>硅谷后台</h1>
         </Link>
-       {/*<LeftNav />*/}
+       <LeftNav />
       </Sider>
       <Layout>
         <Header style={{ background: '#fff', padding: 0 }} />

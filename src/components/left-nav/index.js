@@ -1,49 +1,56 @@
-import {Menu} from "antd/lib/menu";
-import {Icon} from "antd";
-import React from "react";
+import React, {Component} from 'react';
+import {Icon, Menu} from 'antd';
+import {Link, withRouter} from 'react-router-dom';
 
+import {menuList} from '../../config';
 
-export default class LeftNav extends Component {
+const {Item, SubMenu} = Menu;
+
+class LeftNav extends Component {
+  constructor(props) {
+    super(props);
+    this.selectedKey = this.props.location.pathname;
+    this.menus = this.createMenu(this.selectedKey);
+  };
+
+  createItem = menu => {
+    return <Item key={menu.key}>
+      <Link to={menu.key}>
+        <Icon type={menu.icon}/>
+        <span>{menu.title}</span>
+      </Link>
+    </Item>
+  };
+  createMenu = path => {
+    return menuList.map(menu => {
+      if (menu.children) {
+        return <SubMenu key={menu.key}
+                        title={<span>
+                          <Icon type={menu.icon}/>
+                          <span>{menu.title}</span>
+                        </span>}>
+          {
+            menu.children.map(item => {
+              if (item.key === path) {
+                this.openKey = menu.key
+              }
+              return this.createMenu(item)
+            })
+          }
+        </SubMenu>
+      } else {
+        return this.createMenu(menu);
+      }
+    })
+  };
 
   render() {
-    return  <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-      <Menu.Item key="1">
-        <Icon type="pie-chart"/>
-        <span>Option 1</span>
-      </Menu.Item>
-      <Menu.Item key="2">
-        <Icon type="desktop"/>
-        <span>Option 2</span>
-      </Menu.Item>
-      <SubMenu
-        key="sub1"
-        title={
-          <span>
-                  <Icon type="user"/>
-                  <span>User</span>
-                </span>
-        }
-      >
-        <Menu.Item key="3">Tom</Menu.Item>
-        <Menu.Item key="4">Bill</Menu.Item>
-        <Menu.Item key="5">Alex</Menu.Item>
-      </SubMenu>
-      <SubMenu
-        key="sub2"
-        title={
-          <span>
-                  <Icon type="team"/>
-                  <span>Team</span>
-                </span>
-        }
-      >
-        <Menu.Item key="6">Team 1</Menu.Item>
-        <Menu.Item key="8">Team 2</Menu.Item>
-      </SubMenu>
-      <Menu.Item key="9">
-        <Icon type="file"/>
-        <span>File</span>
-      </Menu.Item>
-    </Menu>
+    return <Menu theme="dark" defaultSelectedKeys={[this.selectedKey]} defaultOpenKeys={[this.openKey]} mode="inline">
+      {
+        this.menus
+      }
+    </Menu>;
   }
-}
+};
+
+export default withRouter(LeftNav);
