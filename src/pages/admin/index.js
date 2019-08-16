@@ -10,14 +10,14 @@ import data from '../../utils/store';
 import { getItem } from '../../utils/storage';
 import './index.less';
 
-import Home from '../home';
+// import Home from '../home';
 import Category from '../category';
-import Product from '../product';
-import User from '../user';
-import Role from '../role';
-import Line from '../charts/line';
-import Bar from '../charts/bar';
-import Pie from '../charts/pie';
+// import Product from '../product';
+// import User from '../user';
+// import Role from '../role';
+// import Line from '../charts/line';
+// import Bar from '../charts/bar';
+// import Pie from '../charts/pie';
 
 
 const { Header, Content, Footer, Sider } = Layout;
