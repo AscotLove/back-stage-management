@@ -34,12 +34,12 @@ class LeftNav extends Component {
               if (item.key === path) {
                 this.openKey = menu.key
               }
-              return this.createMenu(item)
+              return this.createItem(item)
             })
           }
         </SubMenu>
       } else {
-        return this.createMenu(menu);
+        return this.createItem(menu);
       }
     })
   };

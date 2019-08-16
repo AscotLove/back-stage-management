@@ -8,6 +8,7 @@ import { reqValidateUser } from '../../api';
 import data from '../../utils/store';
 import { getItem } from '../../utils/storage';
 import './index.less';
+import HeaderMain from '../../components/header-main';
 const { Header, Content, Footer, Sider } = Layout;
 
 
@@ -63,8 +64,10 @@ export default class Admin extends Component {
        <LeftNav />
       </Sider>
       <Layout>
-        <Header style={{ background: '#fff', padding: 0 }} />
-        <Content style={{ margin: '0 16px' }}>
+        <Header style={{ padding: 0 }}>
+          <HeaderMain />
+        </Header>
+        <Content style={{ margin:'65px 16px 0 16px' }}>
           <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>Bill is a cat.</div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
