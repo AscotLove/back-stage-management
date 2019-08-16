@@ -17,9 +17,7 @@ class HeaderMain extends Component {
         data.user = {};
         message.success('退出登录', 3);
         this.props.history.replace('/login');
-
       },
-
     });
   };
 
