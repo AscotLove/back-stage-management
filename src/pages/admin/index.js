@@ -10,7 +10,7 @@ import data from '../../utils/store';
 import { getItem } from '../../utils/storage';
 import './index.less';
 
-// import Home from '../home';
+import Home from '../home';
 import Category from '../category';
 // import Product from '../product';
 // import User from '../user';
@@ -83,12 +83,12 @@ export default class Admin extends Component {
             <Switch>
               <Route path="/home" component={Home} />
               <Route path="/category" component={Category}/>
-              <Route path="/product" component={Product}/>
+             {/* <Route path="/product" component={Product}/>
               <Route path="/user" component={User}/>
               <Route path="/role" component={Role}/>
               <Route path="/charts/bar" component={Bar}/>
               <Route path="/charts/line" component={Line}/>
-              <Route path="/charts/pie" component={Pie}/>
+              <Route path="/charts/pie" component={Pie}/>*/}
               <Redirect to="/home"/>
             </Switch>
           </div>

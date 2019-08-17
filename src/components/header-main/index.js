@@ -53,7 +53,7 @@ class HeaderMain extends Component {
   getTime = () => dayjs(Date.now()).format('YY-MM-DD  HH:mm:ss');
   componentDidMount() {
     this.timer = setInterval(() => {
-      this.setState({time})
+      this.setState({ time: this.getTime() })
     },1000)
     reqWeather('深圳')
       .then((res) => {
@@ -66,6 +66,7 @@ class HeaderMain extends Component {
     clearInterval(this.timer);
   }
   render() {
+    const { title, time, weather, dayPictureUrl } = this.state;
     return <div className="header-main">
       <div className="header-main-top">
         <span>欢迎，{data.user.username}</span>

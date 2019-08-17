@@ -6,7 +6,7 @@ const { Item } = Form;
 
 class AddCategoryForm extends Component {
   static propTypes = {
-    categories: Proptypes.array.isRequired
+    categories: PropTypes.array.isRequired
   };
   render() {
     const { categories, form: { getFieldDecorator }} = this.props;
