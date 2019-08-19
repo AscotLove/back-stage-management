@@ -35,8 +35,7 @@ class HeaderMain extends Component {
   }
   static getDerivedStateFromProps(nextProps, prevState) {
     const { pathname } = nextProps.location;
-    if (pathname === '/') return { title: '首页'};
-
+    if (pathname.startsWith())
     for (let i = 0; i < menuList.length; i++) {
       const menu = menuList[i];
       if (menu.children) {
@@ -49,6 +48,7 @@ class HeaderMain extends Component {
         if (menu.key === pathname) return { title: menu.title }
       }
     }
+    return { title: '首页'};
   }
   getTime = () => dayjs(Date.now()).format('YY-MM-DD  HH:mm:ss');
   componentDidMount() {

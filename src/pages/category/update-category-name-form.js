@@ -1,29 +1,36 @@
-import React, { Component } from 'react';
-import { Form, Input } from 'antd';
+import React, {Component} from 'react';
+import {Form, Input} from 'antd';
 import PropTypes from 'prop-types';
 
 
-const { Item } = Form;
+const {Item} = Form;
+
 class UpdateCategoryNameForm extends Component {
-static propTypes = {
-  category: PropTypes.object.isRequired,
-};
+  static propTypes = {
+    category: PropTypes.object.isRequired,
+  };
   validator = (rule, value, callback) => {
-    if (!name) {
+    if (!value) {
       callback('请输入修改的分类名称');
-    } else if (value === this.props.category)
+    } else if (value === this.props.category.name) {
+      callback('输入名称不能相同');
+    } else {
+      callback();
+    }
+
   }
+
   render() {
-    const { form: { getFieldDecorator }, category: { name }} = this.props;
+    const {form: {getFieldDecorator}, category: {name}} = this.props;
     return <Form>
       <Item>
         {
           getFieldDecorator(
             'categoryName',
             {
-initialvalue: name,
+              initialvalue: name,
               rules: [
-                { validator: this.validator }
+                {validator: this.validator}
               ]
             }
           )(

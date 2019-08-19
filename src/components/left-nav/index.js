@@ -9,10 +9,24 @@ const {Item, SubMenu} = Menu;
 class LeftNav extends Component {
   constructor(props) {
     super(props);
-    this.selectedKey = this.props.location.pathname;
-    this.menus = this.createMenu(this.selectedKey);
+    let { pathname } = this.props.location;
+    if (pathname.startsWith('/product')) {
+      pathname = '/product'
+    }
+    this.menus = this.createMenu(pathname);
+    this.state = {
+      selectedKey: ''
+    }
   };
-
+  static getDerivedStateFromProps(nextProps) {
+    let { pathname } = nextProps.location;
+    if (pathname.startsWith('/product')) {
+      pathname = '/product'
+    }
+    return {
+      selectedKey: pathname
+    }
+  }
   createItem = menu => {
     return <Item key={menu.key}>
       <Link to={menu.key}>
